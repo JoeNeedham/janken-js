@@ -29,7 +29,8 @@ const choices = {
   spock: { name: 'Spock', defeats: ['scissors', 'rock'] },
 };
 
-console.log(allGameIcons);
+let computerChoice = '';
+
 
 // Reset all 'selected' icons
 function resetSelected() {
@@ -38,25 +39,55 @@ function resetSelected() {
   });
 }
 
+// Random computer choice
+function computerRandomChoice() {
+  const computerChoiceNumber = Math.random();
+  if (computerChoiceNumber < 0.2) {
+    computerChoice = 'rock';
+  } else if (computerChoiceNumber <= 0.4) {
+    computerChoice = 'paper';
+  } else if (computerChoiceNumber <= 0.6) {
+    computerChoice = 'lizard';
+  } else if (computerChoiceNumber <= 0.8) {
+    computerChoice = 'lizard';
+  } else {
+    computerChoice = 'spock';
+  }
+  console.log(computerChoice);
+}
+
+// Call functions to process turn
+function checkResult() {
+  resetSelected();
+  computerRandomChoice();
+}
 
 // Passing player selection value and styling icons
 function select(playerChoice) {
-  resetSelected();
+  checkResult();
   switch (playerChoice) {
     case 'rock':
-    playerRock.classList.add('selected');
-    playerChoiceEl.textContent = ' --- Rock';
-    break;
-  case 'scissors':
-    playerScissors.classList.add('selected');
-    playerChoiceEl.textContent = ' --- Scissors';
-    break;
-  case 'spock':
-    playerSpock.classList.add('selected');
-    playerChoiceEl.textContent = ' --- Spock';
-    break;
-  default:
-    break;
+      playerRock.classList.add('selected');
+      playerChoiceEl.textContent = ' --- Rock';
+      break;
+    case 'paper':
+      playerPaper.classList.add('selected');
+      playerChoiceEl.textContent = ' --- Paper';
+      break;
+    case 'scissors':
+      playerScissors.classList.add('selected');
+      playerChoiceEl.textContent = ' --- Scissors';
+      break;
+    case 'lizard':
+      playerLizard.classList.add('selected');
+      playerChoiceEl.textContent = ' --- Lizard';
+      break;
+    case 'spock':
+      playerSpock.classList.add('selected');
+      playerChoiceEl.textContent = ' --- Spock';
+      break;
+    default:
+      break;
   }
 
 }
