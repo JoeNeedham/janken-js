@@ -41,6 +41,18 @@ function resetSelected() {
   });
 }
 
+// Reset Score & playerChoice/computerChoice
+function resetAll() {
+  playerScoreNumber = 0;
+  computerScoreNumber = 0;
+  playerScoreEl.textContent = playerScoreNumber;
+  computerScoreEl.textContent = computerScoreNumber;
+  playerChoiceEl.textContent = '';
+  computerChoiceEl.textContent = '';
+  resultText.textContent = '';
+  resetSelected();
+}
+
 
 // Random computer choice
 function computerRandomChoice() {
@@ -63,7 +75,6 @@ function computerRandomChoice() {
 
 // Add 'selected' styling & computerChoice
 function displayComputerChoice(computerChoice) {
-  console.log("working")
   switch (computerChoice) {
     case 'rock':
       computerRock.classList.add('selected');
@@ -94,12 +105,10 @@ function displayComputerChoice(computerChoice) {
 // Check result, increase scores, update resultText
 function updateScore(playerChoice) {
   resultText.textContent = "";
-  console.log(playerChoice, computerChoice);
   if (playerChoice === computerChoice) {
     resultText.textContent = "It's a tie.";
   } else {
     const choice = choices[playerChoice]
-    console.log(choice.defeats.indexOf(computerChoice));
     if (choice.defeats.indexOf(computerChoice) > -1) {
       resultText.textContent = "You Won!";
       playerScoreNumber++;
@@ -148,4 +157,7 @@ function select(playerChoice) {
       break;
   }
 }
+
+// On startup, set initial values
+resetAll();
 
