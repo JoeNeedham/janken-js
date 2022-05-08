@@ -158,6 +158,7 @@ function select(playerChoice) {
   }
 }
 
+//commit
 // On startup, set initial values
 resetAll();
 
