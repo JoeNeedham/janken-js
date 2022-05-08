@@ -126,3 +126,5 @@ function updateParticles() {
 		}
 	}
 }
+
+export  {startConfettiInner, stopConfettiInner, removeConfettiInner};
